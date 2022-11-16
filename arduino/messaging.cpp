@@ -20,10 +20,6 @@ void Messaging::create_message(Measurement m)
   data[3] = m.y;
   data[4] = m.z >> 8;
   data[5] = m.z;
-  for(int i = 0; i < 6; i++)
-  {
-    Serial.println(data[i], BIN);
-  }
 }
 bool Messaging::send_message(uint8_t id, uint8_t flags)
 {
@@ -49,6 +45,7 @@ bool Messaging::send_message(uint8_t id, uint8_t flags)
     return_value = true;
   }
   pmanager->waitPacketSent();
+  Serial.println("Message sent");
   return return_value;
   
 }
@@ -70,7 +67,7 @@ bool Messaging::receive_ACK()
   receiver_result = pmanager->recvfrom(buf,&len,&from,&to,&id,&flags);
   if(receiver_result)
   {
-    Serial.println("ACK received");
+    //Serial.println("ACK received");
     Serial.println((char *)buf);
     Serial.print("Sent from address: ");
     Serial.print(from);
@@ -82,7 +79,7 @@ bool Messaging::receive_ACK()
   }
   else
   {
-    Serial.println("ACK not reveived, retransmit");
+    //Serial.println("ACK not received, retransmit");
     return false;
   }
 }
