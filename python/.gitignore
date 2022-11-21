@@ -4,3 +4,4 @@ Scripts
 pyvenv.cfg
 auth.py
 accelerometer_data.csv
+__pycache__
