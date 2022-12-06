@@ -19,6 +19,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         
     print(f"received {data}")
     
-with open("./python/TCT_socket_data.csv", "w") as file:
+with open("./python/tcp_socket_data.csv", "w") as file:
     for i in range(len(data)):
         file.write(data[i].decode("utf-8"))
