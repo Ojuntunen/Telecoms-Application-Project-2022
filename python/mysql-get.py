@@ -1,9 +1,8 @@
 import mysql.connector
-import auth
+import authentication
 
-
-db = mysql.connector.connect(user=auth.USER,
-                             password=auth.PASSWORD,
+db = mysql.connector.connect(user=authentication.USER,
+                             password=authentication.PASSWORD,
                              host='172.20.241.9',
                              database='measurements')
 
