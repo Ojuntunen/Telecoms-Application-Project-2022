@@ -1,10 +1,6 @@
 #include "messaging.h"
 #include "accelerator.h"
 
-Accelerator Aobject(A0, A1, A2, A3, A4);
-Messaging Mobject;
-uint8_t flags = 1;
-
 void setup()
 {
   Serial.begin(9600);
@@ -12,7 +8,8 @@ void setup()
 
 void loop()
 {
-  
+  Accelerator Aobject(A0, A1, A2, A3, A4);
+  Messaging Mobject; 
   int number_of_measurements = 0;
 
   Serial.println("Enter number of measurements");
@@ -30,11 +27,11 @@ void loop()
     Aobject.make_measurement();
     Measurement m = Aobject.get_measurement();
     uint8_t id = M;
-
+    uint8_t flags = 0xff;
     Mobject.create_message(m);
     if (Mobject.send_message(id, flags))
     {
-      Serial.println("Successful transmission");
+      Serial.println("Transmission over");
     }
     else
     {

@@ -22,6 +22,7 @@ class Accelerator
 {
     public:
         Accelerator();
+        //For initializing pins for the accelerometer
         Accelerator(int, int, int, int, int);
         ~Accelerator();
         void make_measurement();
