@@ -22,21 +22,9 @@ Accelerator::~Accelerator()
 }
 void Accelerator::make_measurement()
 {
-  int i;
-  measurement.x = 0;
-  measurement.y = 0;
-  measurement.z = 0;
-
-  //getting average of 10 measurements to reduce errors
-  for(i = 0; i < 10; i++)
-  {
-    measurement.x += analogRead(pin_setup.x_pin);
-    measurement.y += analogRead(pin_setup.y_pin);
-    measurement.z += analogRead(pin_setup.z_pin);
-  }
-  measurement.x /= 10;
-  measurement.y /= 10;
-  measurement.z /= 10;
+    measurement.x = analogRead(pin_setup.x_pin);
+    measurement.y = analogRead(pin_setup.y_pin);
+    measurement.z = analogRead(pin_setup.z_pin);
 }
 Measurement Accelerator::get_measurement()
 {
