@@ -43,3 +43,4 @@ for i in range(1000):
         break
 
 data_utilities.plot_results(data, center_points)
+data_utilities.write_h_file(center_points)
