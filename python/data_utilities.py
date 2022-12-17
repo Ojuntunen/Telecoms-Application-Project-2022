@@ -79,10 +79,6 @@ def plot_test_data(path = './python/putty.log'):
 
     plt.show()
 
-# Plots all the center points from the duration of the K-means algorithm into 3D scatter plot
-def plot_center_points(list_of_numpy_arrays):
-    None
-
 # Plots all of the data fetched from the database by get_mysql() into 3D scatter plot
 def plot_all_data(filepath='./python/mysql_get.csv'):
     import pandas as pd
