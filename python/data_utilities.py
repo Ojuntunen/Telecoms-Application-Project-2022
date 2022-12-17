@@ -1,7 +1,6 @@
 # Makes a get request over http for a CSV file, which contains the data in the database.
 def get_http():
     import requests
-    import csv
     data = requests.get("http://172.20.241.9/luedataa_kannasta_groupid_csv.php?groupid=70")
 
     string = data.text
@@ -151,11 +150,6 @@ def plot_cm():
     plt.show()
     
 
-
-
 if __name__ == '__main__':
-    test_array = np.array([[100,100,100],[200,200,200],[300,300,300],[400,400,400]])
-    #write_h_file(test_array)
-    #plot_all_data()
-    #plot_cm()
+    None
     
