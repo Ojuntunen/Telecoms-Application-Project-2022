@@ -3,7 +3,7 @@
 
 #include "arduino.h"
 
-void button_interrupt();
-double calc_distance(double cp[], double accel_values[]);
+void predict_alignment();
+void calc_distance(double accel_values[], double distances[]);
 
 #endif

@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 from sklearn import metrics
 
-#plots example data into 3d scatter plot
 def plot_test_data(path = './python/putty.log'):
     data = np.loadtxt(f'{path}')
 
@@ -21,20 +20,9 @@ def plot_test_data(path = './python/putty.log'):
 
     plt.show()
 
-#plots a (n,3) list of points into 3d scatter plot
-def plot_center_points(list_of_points):
-    data = np.array(list_of_points)
-    print(data.shape)
-    # x = list_of_points[:][0]
-    # y = list_of_points[:][1]
-    # z = list_of_points[:][2]
-    # fig = plt.figure()
-    # ax = plt.axes(projection = '3d')
-    # ax.scatter(x,y,z)
+def plot_center_points(list_of_arrays):
+    None
 
-    # plt.show()
-
-#plots all the data in found in the database into 3d scatter plot
 def plot_all_data(filepath='./python/mysql_get.csv'):
     data = pd.read_csv(f'{filepath}', sep=';')
     fig = plt.figure()
@@ -46,14 +34,19 @@ def plot_all_data(filepath='./python/mysql_get.csv'):
     ax.set_title('All data', fontweight='bold', fontsize=16)
     plt.show()
 
-#writes the results of the K-means algorithm into a C++ h-file for use with the arduino
 def write_h_file(array):
     with open('./arduino_main/centerpoints.h', 'w') as file:
-        file.write('#ifndef CENTERPOINTS_H\n')
-        file.write('#define CENTERPOINTS_H\n\n')
-        for i in range(len(array)):
-            file.write(f'double center_point_{i+1}[] = {{{array[i,0]},{array[i,1]},{array[i,2]}}};\n')
-        file.write('\n#endif')
+        file.write('#ifndef CENTERPOINTS_H\n#define CENTERPOINTS_H\n\ndouble center_points[4][4] = {')
+        i = 0
+        for row in array:
+            file.write('{')
+            for element in row:
+                file.write(str(int(element)) + ',')
+            file.write(f'{i}}}')
+            if i < 3:
+                file.write(', ')
+            i+=1
+        file.write('};\n\n#endif')
         file.close()
 
 def plot_results(data, center_points):
@@ -88,4 +81,5 @@ if __name__ == '__main__':
     test_array = np.array([[100,100,100],[200,200,200],[300,300,300],[400,400,400]])
     #write_h_file(test_array)
     #plot_all_data()
-    plot_cm()
+    #plot_cm()
+    

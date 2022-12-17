@@ -5,7 +5,7 @@
 void setup()
 {
   Serial.begin(9600);
-  attachInterrupt(digitalPinToInterrupt(2), button_interrupt, RISING);
+  attachInterrupt(digitalPinToInterrupt(2), predict_alignment, RISING);
 }
 
 void loop()
@@ -14,7 +14,7 @@ void loop()
   Messaging Mobject; 
   int number_of_measurements = 0;
 
-  //Serial.println("Enter number of measurements");
+  Serial.println("Enter number of measurements");
 
   while (number_of_measurements == 0)
   {
